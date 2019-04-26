@@ -116,6 +116,9 @@ def parse_args():
     parser.add_argument(
         'im_or_folder', help='image or folder of images', default=None
     )
+    parser.add_argument(
+        'name', type=str
+    )
     if len(sys.argv) == 1:
         parser.print_help()
         sys.exit(1)
@@ -210,7 +213,7 @@ def main(args):
         ]
     }
     # np.savez(os.path.join('/home/narvis/Dev/VideoPose3D/data', "data_2d_detections.npz"), metadata=metadata, positions_2d=dictionarry_keypoints)
-    np.savez(os.path.join(args.output_dir, "data_2d_detections.npz"), metadata=metadata, positions_2d=dictionarry_keypoints)
+    np.savez(os.path.join(args.output_dir, "data_2d_detections" + args.name + ".npz"), metadata=metadata, positions_2d=dictionarry_keypoints)
     #Splitting Command:  ffmpeg -i ice_cutted_cropped.mp4 -r 25/1 splitted_scating/output%04d.png
     # Video Link: https://www.youtube.com/watch?v=ke0iusvydl8
 
